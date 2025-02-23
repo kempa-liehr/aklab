@@ -23,7 +23,7 @@ def savefig(label, suffix='pdf', path=None):
             notebook_path = ipynbname.path()
         except FileNotFoundError:
             notebook_path = Path.cwd()
-        if notebook_path.exists().parent.name == 'notebooks':
+        if notebook_path.parent.name == 'notebooks':
             path = notebook_path.parent / 'results' / 'figs'
         else:
             path = notebook_path / 'figs'

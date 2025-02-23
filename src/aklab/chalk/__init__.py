@@ -16,7 +16,7 @@ def list2color(data, cmap=plt.cm.jet):
                     )
                 )
 
-def savefig(label, suffix='pdf', path=None):
+def savefig(label, suffix='pdf', path=None, copyrightbox=False):
     notebookID = ipynbname.name().split('__')[0] + '__'
     if path is None:
         try:
@@ -31,6 +31,9 @@ def savefig(label, suffix='pdf', path=None):
         path.mkdir(parents=True)
     fn = f'{notebookID}{label}.{suffix}'
     plt.savefig(path / fn, bbox_inches='tight')
+    if copyrightbox:
+        print (r'\copyrightbox[b]{\n\includegraphics[width=\textwidth]{./figs/' + fn + '}\n}\n' +
+               r'{\texttt{' + fn.replace('_', '\_') + '}}' )
     return fn
 
 

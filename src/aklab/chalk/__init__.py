@@ -7,7 +7,7 @@ import pandas as pd
 from pathlib import Path
 import seaborn as sns
 
-from aklab.report import Orgmode
+from aklab.report.orgmode import Orgmode
 
 sns.set_palette('tab20')
 colors = [cm.to_hex(plt.cm.tab20(i)) for i in range(20)]

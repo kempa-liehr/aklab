@@ -7,6 +7,8 @@ import pandas as pd
 from pathlib import Path
 import seaborn as sns
 
+from aklab.report import Orgmode
+
 sns.set_palette('tab20')
 colors = [cm.to_hex(plt.cm.tab20(i)) for i in range(20)]
 
@@ -32,8 +34,7 @@ def savefig(label, suffix='pdf', path=None, copyrightbox=False):
     fn = f'{notebookID}{label}.{suffix}'
     plt.savefig(path / fn, bbox_inches='tight')
     if copyrightbox:
-        print (r'\copyrightbox[b]{\n\includegraphics[width=\textwidth]{./figs/' + fn + '}\n}\n' +
-               r'{\texttt{' + fn.replace('_', '\_') + '}}' )
+        _ = Orgmode().standalone_figure(fn)
     return fn
 
 

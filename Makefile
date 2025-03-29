@@ -1,5 +1,5 @@
 # Define the virtual environment directory
-PROJECT=stsfe
+PROJECT=aklab
 VENV_DIR=~/08-STSFE/venv/$(PROJECT)
 
 # Define the commands
@@ -20,8 +20,8 @@ ACTIVATE_CMD=source $(VENV_DIR)/bin/activate
 UPGRADE_PIP_CMD=pip install --upgrade pip 
 INSTALL_PYTEST=pip install -U pytest pytest-cov
 INSTALL_CONTEXERE=cd ../contexere;pip install -e .;cd ../$(PROJECT)
-INSTALL_SDM=cd ../sdm;pip install -e .;cd ../$(PROJECT)
 INSTALL_DEV=pip install -e .
+INSTALL_KERNEL=ipython kernel install --user --name $(PROJECT)
 
 # Default target
 all: venv
@@ -32,8 +32,8 @@ venv:
 	$(ACTIVATE_CMD) && $(UPGRADE_PIP_CMD)
 	$(ACTIVATE_CMD) && $(INSTALL_PYTEST)
 	$(ACTIVATE_CMD) && $(INSTALL_CONTEXERE)
-	$(ACTIVATE_CMD) && $(INSTALL_SDM)
 	$(ACTIVATE_CMD) && $(INSTALL_DEV)
+	$(ACTIVATE_CMD) && $(INSTALL_KERNEL)
 
 activate:
 	@echo "#!/bin/sh" > activate_venv.sh
